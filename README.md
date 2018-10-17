@@ -1,4 +1,7 @@
 # Puppet-CouchDB
-puppet module for CouchDB
 
-Av Alexander Jakobsen og Mats Ove Mandt Skjærstein
+## Overview
+The CouchDB module installs and configures CouchDB 
+
+
+By Alexander Jakobsen og Mats Ove Mandt Skjærstein
