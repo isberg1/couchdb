@@ -1,3 +1,6 @@
+# Depends on 'puppetlabs-stdlib --version 5.1.0'
+# $ puppet module install puppetlabs-stdlib --version 5.1.0
+
 node default {
   file { '/etc/apt/sources.list':
     ensure  => present,
