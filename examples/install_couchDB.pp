@@ -32,4 +32,10 @@ node default {
     ensure   => installed,
     #install_options      => # An array of additional options to pass when..
   }
+
+  package { 'curl':
+    ensure => '7.58.0-2ubuntu3.1',
+  }
+
+
 }
