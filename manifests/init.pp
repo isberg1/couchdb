@@ -69,19 +69,18 @@ class couchdb (
   # Available parameters:
   Optional[String] $database_dir
   Optional[Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z]] $file_compression
-  Optional [] $max_dbs_open
-  Optional [] $uuid
-  Optional [] $max_document_size
-  Optional [] $couch_peruser
-  Optional [Enum['everyone', 'admin_only', 'admin_local']] $default_security
-  Optional [] $bind_address
-  Optional [] $port
-  Optional [] $admin_password
-  Optional [] $allow_persistent_cookies
-  Optional [] $require_valid_user
+  Optional[Integer] $max_dbs_open
+  Optional[String] $uuid
+  Optional[Integer] $max_document_size
+  Optional[Enum['true', 'false']] $couch_peruser
+  Optional[Enum['everyone', 'admin_only', 'admin_local']] $default_security
+  Optional[String] $bind_address
+  Optional[Integer] $port
+  Optional[String] $admin_password
+  Optional[Enum['true', 'false']] $allow_persistent_cookies
+  Optional[Enum['true', 'false']] $require_valid_user
 
 ) {
-
   # Contains install and config, install runs before config.
   contain couchdb::install
   contain couchdb::config
