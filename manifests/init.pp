@@ -64,7 +64,27 @@
 #	Makes cookies persistent if set to 'true'. 
 #
 
-class couchdb {
+class couchdb (
+  # Available parameters:
+  String couchdb::database_dir
+  Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z] $file_compression
+  couchdb::max_dbs_open
+  couchdb::uuid
+  couchdb::max_document_size
+  couchdb::couch_peruser
+  Enum['everyone', 'admin_only', 'admin_local'] $default_security
+  couchdb::bind_address
+  couchdb::port
+  couchdb::admin_password
+  couchdb::allow_persistent_cookies
+  couchdb::require_valid_user
 
+  ) {
 
+  # Contains install and config, install runs before config.
+  contain couchdb::install
+  contain couchdb::config
+
+  Class['::couchdb::install']
+  -> ['::couchdb::config']
 }
