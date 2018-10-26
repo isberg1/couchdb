@@ -66,18 +66,18 @@
 
 class couchdb (
   # Available parameters:
-  String couchdb::database_dir
+  String $database_dir
   Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z] $file_compression
-  couchdb::max_dbs_open
-  couchdb::uuid
-  couchdb::max_document_size
-  couchdb::couch_peruser
+  $max_dbs_open
+  $uuid
+  $max_document_size
+  $couch_peruser
   Enum['everyone', 'admin_only', 'admin_local'] $default_security
-  couchdb::bind_address
-  couchdb::port
-  couchdb::admin_password
-  couchdb::allow_persistent_cookies
-  couchdb::require_valid_user
+  $bind_address
+  $port
+  $admin_password
+  $allow_persistent_cookies
+  $require_valid_user
 
   ) {
 
