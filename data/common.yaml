@@ -1,25 +1,19 @@
 # couchdb/data/common.yaml
 ---
-
+# Server_Administration
 couchdb::database_dir
 couchdb::file_compression
 couchdb::max_dbs_open
 couchdb::uuid
 couchdb::max_document_size
 couchdb::couch_peruser
-
 couchdb::default_security
 
-#authentication_handlers
+# Authentication_handlers
 couchdb::bind_address
 couchdb::port
-
-#Server_Administration
-couchdb::require_valid_user
 
 # Authentication_Configuration
 couchdb::admin_password
 couchdb::allow_persistent_cookies
 couchdb::require_valid_user
-
-
