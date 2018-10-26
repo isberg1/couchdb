@@ -1,9 +1,6 @@
 # couchdb/data/common.yaml
 ---
-Common.yaml fil
-#couchdb::logging_options - Fjernet
 
----
 couchdb::database_dir
 couchdb::file_compression
 couchdb::max_dbs_open
