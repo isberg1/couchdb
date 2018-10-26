@@ -1,6 +1,8 @@
 # Puppet module for installing CouchDB.
 #
 # Main class, contains all other classes.
+# All parameters are optional. CouchDB wil supply its config-file with
+# default options if none is specified.
 #
 #
 # @param database_dir
@@ -23,7 +25,6 @@
 #
 # @param uuid
 #	Unique identifier for this CouchDB server instance.
-#	This parameter is optional, it will be generetad by the system if none is provided.
 #
 #
 # @param max_document_size
@@ -66,20 +67,20 @@
 
 class couchdb (
   # Available parameters:
-  String $database_dir
-  Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z] $file_compression
-  $max_dbs_open
-  $uuid
-  $max_document_size
-  $couch_peruser
-  Enum['everyone', 'admin_only', 'admin_local'] $default_security
-  $bind_address
-  $port
-  $admin_password
-  $allow_persistent_cookies
-  $require_valid_user
+  Optional[String] $database_dir
+  Optional[Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z]] $file_compression
+  Optional [] $max_dbs_open
+  Optional [] $uuid
+  Optional [] $max_document_size
+  Optional [] $couch_peruser
+  Optional [Enum['everyone', 'admin_only', 'admin_local']] $default_security
+  Optional [] $bind_address
+  Optional [] $port
+  Optional [] $admin_password
+  Optional [] $allow_persistent_cookies
+  Optional [] $require_valid_user
 
-  ) {
+) {
 
   # Contains install and config, install runs before config.
   contain couchdb::install
@@ -87,4 +88,5 @@ class couchdb (
 
   Class['::couchdb::install']
   -> ['::couchdb::config']
+
 }
