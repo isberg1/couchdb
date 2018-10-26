@@ -34,7 +34,7 @@ node default {
   }
 
   package { 'curl':
-    ensure => '7.58.0-2ubuntu3.1',
+    ensure => installed,
   }
 
 
