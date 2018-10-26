@@ -31,8 +31,12 @@
 #	Limit maximum document body size.
 #
 #
-# @param couch_peruser
+# @param couch_peruser_enable
 #	If set to 'true', couch_peruser ensures that a private per-user database exists for each document in _users.
+#
+#
+# @param couch_peruser_delete
+#   If set to 'true' and a user is deleted, the respective database gets deleted as well.
 #
 #
 # @param default_security
@@ -72,7 +76,8 @@ class couchdb (
   Optional[Integer] $max_dbs_open
   Optional[String] $uuid
   Optional[Integer] $max_document_size
-  Optional[Enum['true', 'false']] $couch_peruser
+  Optional[Enum['true', 'false']] $couch_peruser_enable
+  Optional[Enum['true', 'false']] $couch_peruser_delete
   Optional[Enum['everyone', 'admin_only', 'admin_local']] $default_security
   Optional[String] $bind_address
   Optional[Integer] $port
