@@ -71,19 +71,19 @@
 
 class couchdb (
   # Available parameters:
-  Optional[String] $database_dir
-  Optional[Variant[Enum['none', 'snappy'], Pattern[/\Adeflate_[1-9]\z]] $file_compression
-  Optional[Integer] $max_dbs_open
-  Optional[String] $uuid
-  Optional[Integer] $max_document_size
-  Optional[Enum['true', 'false']] $couch_peruser_enable
-  Optional[Enum['true', 'false']] $couch_peruser_delete
-  Optional[Enum['everyone', 'admin_only', 'admin_local']] $default_security
-  Optional[String] $bind_address
-  Optional[Integer] $port
-  Optional[String] $admin_password
-  Optional[Enum['true', 'false']] $allow_persistent_cookies
-  Optional[Enum['true', 'false']] $require_valid_user
+  Optional[String] $database_dir,
+  Optional[Variant[Enum['none', 'snappy'], Pattern[/\Adeflate_[1-9]\z/]]] $file_compression,
+  Optional[Integer] $max_dbs_open,
+  Optional[String] $uuid,
+  Optional[Integer] $max_document_size,
+  Optional[Enum['true', 'false']] $couch_peruser_enable,
+  Optional[Enum['true', 'false']] $couch_peruser_delete,
+  Optional[Enum['everyone', 'admin_only', 'admin_local']] $default_security,
+  Optional[String] $bind_address,
+  Optional[Integer] $port,
+  Optional[String] $admin_password,
+  Optional[Enum['true', 'false']] $allow_persistent_cookies,
+  Optional[Enum['true', 'false']] $require_valid_user,a
 
 ) {
   # Contains install and config, install runs before config.
