@@ -72,7 +72,7 @@
 class couchdb (
   # Available parameters:
   Optional[String] $database_dir
-  Optional[Variant["none", "snappy"], Pattern[/\Adeflate_[1-9]\z]] $file_compression
+  Optional[Variant Enum['none', 'snappy'], Pattern[/\Adeflate_[1-9]\z]] $file_compression
   Optional[Integer] $max_dbs_open
   Optional[String] $uuid
   Optional[Integer] $max_document_size
