@@ -30,7 +30,7 @@ class couchdb::config {
     value   => $couchdb::max_dbs_open,
   }
 
-  if $::uuid != '' {
+  if $couchdb::uuid != '' {
     ini_setting { 'uuid':
       ensure  => present,
       path    => '/opt/couchdb/etc/local.d/couchdb.ini',
@@ -40,7 +40,7 @@ class couchdb::config {
     }
   }
 
-  if $::max_document_size != '' {
+  if $couchdb::max_document_size != '' {
     ini_setting { 'max_document_id_length':
       ensure  => present,
       path    => '/opt/couchdb/etc/local.d/couchdb.ini',
@@ -91,7 +91,7 @@ class couchdb::config {
     value   => $couchdb::port,
   }
 
-  if $::admin_password != '' {
+  if $couchdb::admin_password != '' {
     ini_setting { 'admin':
       ensure  => present,
       path    => '/opt/couchdb/etc/local.d/admins.ini',
