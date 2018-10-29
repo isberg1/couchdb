@@ -64,7 +64,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couch_peruser.ini',
     section => 'couch_peruser',
     setting => 'delete_dbs',
-    value   => $::delete_dbs,
+    value   => $::couch_peruser_delete,
   }
 
   ini_setting { 'default_security':

@@ -88,9 +88,9 @@ class couchdb (
 ) {
   # Contains install and config, install runs before config.
   contain couchdb::install
-  contain couchdb::config
 
-  Class['::couchdb::install']
-  -> ['::couchdb::config']
+ class { 'couchdb::config':
+  require => Class['couchdb::install'],
+ }
 
 }
