@@ -5,11 +5,6 @@ class couchdb::install {
   # Includes apt module.
   include apt
 
-  # Creates the database directory
-  file { $couchdb::database_dir:
-    ensure => 'directory',
-  }
-
   # Adds the repository of couchdb.
   apt::source { 'apache_couchdb':
     location => 'https://apache.bintray.com/couchdb-deb',

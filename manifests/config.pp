@@ -117,4 +117,11 @@ class couchdb::config {
     value   => $::require_valid_user,
   }
 
+ # Creates the database directory
+  file { $database_dir :
+    ensure => 'directory',
+  }
+
+
+
 }
