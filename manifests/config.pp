@@ -91,12 +91,14 @@ class couchdb::config {
     value   => $::port,
   }
 
-  ini_setting { 'admin':
-    ensure  => present,
-    path    => '/opt/couchdb/etc/local.d/admins.ini',
-    section => 'admins',
-    setting => 'admin',
-    value   => $::admin,
+  if $::admin_password != '' {
+    ini_setting { 'admin':
+      ensure  => present,
+      path    => '/opt/couchdb/etc/local.d/admins.ini',
+      section => 'admins',
+      setting => 'admin',
+      value   => $::admin_password,
+    }
   }
 
   ini_setting { 'allow_persistent_cookies':
