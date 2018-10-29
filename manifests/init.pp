@@ -83,7 +83,7 @@ class couchdb (
   Optional[Integer] $port,
   Optional[String] $admin_password,
   Optional[Enum['true', 'false']] $allow_persistent_cookies,
-  Optional[Enum['true', 'false']] $require_valid_user,a
+  Optional[Enum['true', 'false']] $require_valid_user,
 
 ) {
   # Contains install and config, install runs before config.
