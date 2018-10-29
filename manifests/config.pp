@@ -11,7 +11,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couchdb.ini',
     section => 'couchdb',
     setting => 'database_dir',
-    value   => $::database_dir,
+    value   => $couchdb::database_dir,
   }
 
   ini_setting { 'file_compression':
@@ -19,7 +19,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couchdb.ini',
     section => 'couchdb',
     setting => 'file_compression',
-    value   => $::file_compression,
+    value   => $couchdb::file_compression,
   }
 
   ini_setting { 'max_dbs_open':
@@ -27,7 +27,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couchdb.ini',
     section => 'couchdb',
     setting => 'max_dbs_open',
-    value   => $::max_dbs_open,
+    value   => $couchdb::max_dbs_open,
   }
 
   if $::uuid != '' {
@@ -36,7 +36,7 @@ class couchdb::config {
       path    => '/opt/couchdb/etc/local.d/couchdb.ini',
       section => 'couchdb',
       setting => 'couchdb',
-      value   => $::uuid,
+      value   => $couchdb::uuid,
     }
   }
 
@@ -46,7 +46,7 @@ class couchdb::config {
       path    => '/opt/couchdb/etc/local.d/couchdb.ini',
       section => 'couchdb',
       setting => 'max_document_size',
-      value   => $::max_document_size,
+      value   => $couchdb::max_document_size,
     }
 
   }
@@ -56,7 +56,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couch_peruser.ini',
     section => 'couch_peruser',
     setting => 'enable',
-    value   => $::couch_peruser_enable,
+    value   => $couchdb::couch_peruser_enable,
   }
 
   ini_setting { 'delete_dbs':
@@ -64,7 +64,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couch_peruser.ini',
     section => 'couch_peruser',
     setting => 'delete_dbs',
-    value   => $::couch_peruser_delete,
+    value   => $couchdb::couch_peruser_delete,
   }
 
   ini_setting { 'default_security':
@@ -72,7 +72,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couchdb.ini',
     section => 'couchdb',
     setting => 'default_security',
-    value   => $::default_security,
+    value   => $couchdb::default_security,
   }
 
   ini_setting { 'bind_address':
@@ -80,7 +80,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/chttpd.ini',
     section => 'chttpd',
     setting => 'bind_address',
-    value   => $::bind_address,
+    value   => $couchdb::bind_address,
   }
 
   ini_setting { 'port':
@@ -88,7 +88,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/chttpd.ini',
     section => 'chttpd',
     setting => 'port',
-    value   => $::port,
+    value   => $couchdb::port,
   }
 
   if $::admin_password != '' {
@@ -97,7 +97,7 @@ class couchdb::config {
       path    => '/opt/couchdb/etc/local.d/admins.ini',
       section => 'admins',
       setting => 'admin',
-      value   => $::admin_password,
+      value   => $couchdb::admin_password,
     }
   }
 
@@ -106,7 +106,7 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/couch_httpd_auth.ini',
     section => 'couch_httpd_auth',
     setting => 'allow_persistent_cookies',
-    value   => $::allow_persistent_cookies,
+    value   => $couchdb::allow_persistent_cookies,
   }
 
   ini_setting { 'require_valid_user':
@@ -114,11 +114,12 @@ class couchdb::config {
     path    => '/opt/couchdb/etc/local.d/chttpd.ini',
     section => 'chttpd',
     setting => 'require_valid_user',
-    value   => $::require_valid_user,
+    value   => $couchdb::require_valid_user,
   }
 
- # Creates the database directory
-  file { $database_dir :
+  # Creates the database directory
+  file { 'database_dir' :
+    path =>  $couchdb::database_dir,
     ensure => 'directory',
   }
 
