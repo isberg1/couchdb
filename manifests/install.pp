@@ -1,4 +1,4 @@
-# This class installs or creates new objects on the system.
+# This class installs couchdb.
 
 class couchdb::install {
 
@@ -12,7 +12,7 @@ class couchdb::install {
     include  => {
       'deb' => true,
     },
-    before  => Exec['update_apt'],
+    before   => Exec['update_apt'],
   }
 
   # Installs curl.
@@ -20,10 +20,10 @@ class couchdb::install {
     ensure => installed,
   }
 
-# Adds the PPA key.
+  # Adds the PPA key.
   exec {'add_key':
     command => 'wget -q https://couchdb.apache.org/repo/bintray-pubkey.asc -O /tmp/key;apt-key add /tmp/key;rm /tmp/key',
-    path => ['/usr/bin', '/bin', '/sbin'],
+    path    => ['/usr/bin', '/bin', '/sbin'],
     before  => Exec['update_apt'],
   }
 

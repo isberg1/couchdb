@@ -1,9 +1,5 @@
-# A description of what this class does
-#
-# @summary A short summary of the purpose of this class
-#
-# @example
-#   include couchdb::config
+# This class changes the couchdb configuration.
+
 class couchdb::config {
 
   ini_setting { 'database_dir':
