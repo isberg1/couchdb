@@ -6,8 +6,8 @@ couchdb::file_compression: 'snappy'
 couchdb::max_dbs_open: 500
 couchdb::uuid:
 couchdb::max_document_size:
-couchdb::couch_peruser_enable: 'false'
-couchdb::couch_peruser_delete: 'false'
+couchdb::couch_peruser_enable: false
+couchdb::couch_peruser_delete: false
 couchdb::default_security: 'admin_local'
 
 # Authentication_handlers
@@ -16,5 +16,5 @@ couchdb::port: 5984
 
 # Authentication_Configuration
 couchdb::admin_password:
-couchdb::allow_persistent_cookies: 'false'
-couchdb::require_valid_user: 'false'
+couchdb::allow_persistent_cookies: false
+couchdb::require_valid_user: false
