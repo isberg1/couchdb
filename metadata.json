@@ -2,26 +2,29 @@
   "name": "saurus-couchdb",
   "version": "0.1.0",
   "author": "Alexander Jakobsen, Mats Ove Mandt Skjaerstein",
-  "summary": "",
+  "summary": "Installs and configures CouchDB.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/isberg1/couchdb",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 5.1.0"
+      "version_requirement": "= 5.1.0"
+    },
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": "= 6.1.1"
+    },
+    {
+      "name": "puppetlabs-inifile",
+      "version_requirement": ">= 2.3.0 < 2.4.0"
     }
   ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
-    {
-      "operatingsystem": "Debian",
-      "operatingsystemrelease": [
-        "8"
-      ]
-    },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "16.04"
+        "18.04"
       ]
     }
   ],
