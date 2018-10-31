@@ -119,10 +119,8 @@ class couchdb::config {
 
   # Creates the database directory
   file { 'database_dir' :
-    path =>  $couchdb::database_dir,
     ensure => 'directory',
+    path   =>  $couchdb::database_dir,
   }
-
-
-
+  
 }

@@ -12,7 +12,7 @@ class couchdb::install {
     include  => {
       'deb' => true,
     },
-    before => Package['curl'],
+    before   => Package['curl'],
   }
 
   # Installs curl.

@@ -6,16 +6,16 @@
 #
 #
 # @param database_dir
-#	Specifies location of CouchDB database files (*.couch named). 
+#	Specifies location of CouchDB database files (*.couch named).
 #	This location should be writable and readable for the user the CouchDB service runs as (couchdb by default).
 #
 #
 # @param file_compression
-#	Method used to compress everything that is appended to database and view index files, except for attachments. 
+#	Method used to compress everything that is appended to database and view index files, except for attachments.
 #	Available methods are:
 #	  - none:      no compression
 #	  - snappy:    use Google Snappy, a very fast compressor/decompressor
-#	  - deflate_N: use zlib’s deflate; N is the compression level which ranges from 
+#	  - deflate_N: use zlib’s deflate; N is the compression level which ranges from
 #		1 (fastest, lowest compression ratio) to 9 (slowest, highest compression ratio)
 #
 #
@@ -63,10 +63,10 @@
 # @param admin_password
 #	Enables the admin account and sets the admin password.
 #	This crashes the 'admin party' (everyone is a admin).
-#	
+#
 #
 # @param allow_persistent_cookies
-#	Makes cookies persistent if set to 'true'. 
+#	Makes cookies persistent if set to 'true'.
 #
 
 class couchdb (
@@ -76,21 +76,21 @@ class couchdb (
   Optional[Integer] $max_dbs_open,
   Optional[String] $uuid,
   Optional[Integer] $max_document_size,
-  Optional[Enum['true', 'false']] $couch_peruser_enable,
-  Optional[Enum['true', 'false']] $couch_peruser_delete,
-  Optional[Enum['everyone', 'admin_only', 'admin_local']] $default_security,
+  Optional[Enum[true, false]] $couch_peruser_enable,
+  Optional[Enum[true, false]] $couch_peruser_delete,
+  Optional[Enum[everyone, admin_only, admin_local]] $default_security,
   Optional[String] $bind_address,
   Optional[Integer] $port,
   Optional[String] $admin_password,
-  Optional[Enum['true', 'false']] $allow_persistent_cookies,
-  Optional[Enum['true', 'false']] $require_valid_user,
+  Optional[Enum[true, false]] $allow_persistent_cookies,
+  Optional[Enum[true, false]] $require_valid_user,
 
 ) {
   # Contains install and config, install runs before config.
   contain couchdb::install
 
- class { 'couchdb::config':
-  require => Class['couchdb::install'],
- }
+  class { 'couchdb::config':
+    require => Class['couchdb::install'],
+  }
 
 }
