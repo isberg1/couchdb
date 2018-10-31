@@ -12,20 +12,18 @@ class couchdb::install {
     include  => {
       'deb' => true,
     },
-    before   => Package['curl'],
+    before  => Exec['update_apt'],
   }
 
   # Installs curl.
   package { 'curl':
     ensure => installed,
-    before => Exec['add_key'],
   }
 
 # Adds the PPA key.
   exec {'add_key':
-    command => 'curl -L https://couchdb.apache.org/repo/bintray-pubkey.asc  | sudo apt-key add -',
-    path    => ['/usr/bin/'],
-    require => Package['curl'],
+    command => 'wget -q https://couchdb.apache.org/repo/bintray-pubkey.asc -O /tmp/key;apt-key add /tmp/key;rm /tmp/key',
+    path => ['/usr/bin', '/bin', '/sbin'],
     before  => Exec['update_apt'],
   }
 
