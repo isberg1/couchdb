@@ -122,5 +122,4 @@ class couchdb::config {
     ensure => 'directory',
     path   =>  $couchdb::database_dir,
   }
-  
 }
