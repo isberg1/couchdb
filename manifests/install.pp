@@ -2,9 +2,6 @@
 
 class couchdb::install {
 
-  # Includes apt module.
-  include apt
-
   # Adds the repository of couchdb.
   apt::source { 'apache_couchdb':
     location => 'https://apache.bintray.com/couchdb-deb',
