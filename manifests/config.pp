@@ -28,6 +28,14 @@ class couchdb::config {
     }
   }
 
+  ini_setting { 'default_security':
+    ensure  => present,
+    path    => '/opt/couchdb/etc/local.ini',
+    section => 'couchdb',
+    setting => 'default_security',
+    value   => $couchdb::default_security,
+  }
+
   ini_setting { 'couch_peruser_enable':
     ensure  => present,
     path    => '/opt/couchdb/etc/local.ini',
@@ -44,13 +52,7 @@ class couchdb::config {
     value   => $couchdb::couch_peruser_delete,
   }
 
-  ini_setting { 'default_security':
-    ensure  => present,
-    path    => '/opt/couchdb/etc/local.ini',
-    section => 'couchdb',
-    setting => 'default_security',
-    value   => $couchdb::default_security,
-  }
+
 
   ini_setting { 'bind_address':
     ensure  => present,
@@ -66,6 +68,14 @@ class couchdb::config {
     section => 'chttpd',
     setting => 'port',
     value   => $couchdb::port,
+  }
+
+  ini_setting { 'require_valid_user':
+    ensure  => present,
+    path    => '/opt/couchdb/etc/local.ini',
+    section => 'chttpd',
+    setting => 'require_valid_user',
+    value   => $couchdb::require_valid_user,
   }
 
   if $couchdb::admin_password != undef {
@@ -86,11 +96,7 @@ class couchdb::config {
     value   => $couchdb::allow_persistent_cookies,
   }
 
-  ini_setting { 'require_valid_user':
-    ensure  => present,
-    path    => '/opt/couchdb/etc/local.ini',
-    section => 'chttpd',
-    setting => 'require_valid_user',
-    value   => $couchdb::require_valid_user,
-  }
+
 }
+
+
