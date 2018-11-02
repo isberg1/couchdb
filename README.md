@@ -40,49 +40,54 @@ For more configuration examples, se the [reference section below](#reference)
 ## Reference
 
 ### The couchdb class accepts these parameters, all of which are optional.    
-```
-$file_compression
-```
-Method used to compress everything that is appended to the database and view index files, except for attachments.
+
+Parameter: `$file_compression`
+
+Method used to compress everything that is appended to the database and view index files, except for attachments.    
 Data type: `Enum/Pattern`
 Available options:    
  * none
  * snappy
  * deflate_1 - deflate_9
 
-```
-$max_dbs_open
-```
+***
+
+Parameter: `$max_dbs_open`
+
 This option places an upper bound on the number of databases that can be open at once.    
 Data type: `Ìnteger`
 
-```
-$max_document_size
-```
+***
+
+Parameter: `$max_document_size`
+
 Limit maximum document body size.    
 Data type: Integer
 
-```
-$couch_peruser_enable
-```
+***
+
+Parameter: `$couch_peruser_enable`
+
 If set to 'true', couch_peruser ensures that a private per-user database exists for each document in \_users.    
 Data type: `Boolean`    
 Available options:    
  * true
  * false
 
-```
-$couch_peruser_delete
-```
+***
+
+Parameter: `$couch_peruser_delete`
+
 If set to 'true' and a user is deleted, the respective database gets deleted as well.    
 Data type: `Boolean`    
 Available options:    
  * true
  * false
 
-```
-$default_security
-```
+***
+
+Parameter: `$default_security`
+
 Default security object for databases.    
 Data type: `Enum`    
 Available options:    
@@ -90,37 +95,41 @@ Available options:
  * admin_only - (Only admins can read and write)
  * admin_local - (Sharded databases can be read and written by anyone but the shards can only be read and written by admins)
 
-```
-$require_valid_user
-```
+***
+
+Parameter: `$require_valid_user`
+
 When set to 'true', no requests are allowed from anonymous users. Everyone must be authenticated.    
 Data type: `Boolean`    
 Available options:    
  * true
  * false
 
-```
-$bind_address
-```
+***
+
+Parameter: `$bind_address`
+
 Defines the IP address by which the clustered port is available.    
 Data type: `String`
 
-```
-$port
-```
+***
+
+Parameter: `$port`
+
 Defines the port number to listen.    
 Data type: `Integer`
 
-```
-$admin_password
-```
+***
+
+Parameter: `$admin_password`
+
 Enables the admin account and sets the admin password. This crashes the 'admin party' (everyone is a admin).    
 Data type: `String`
 
+***
 
-```
-$allow_persistent_cookies
-```
+Parameter: `$allow_persistent_cookies`
+
 Makes cookies persistent if set to 'true'.    
 Data type: `Boolean`    
 Available options:    
