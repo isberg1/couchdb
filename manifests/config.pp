@@ -26,16 +26,6 @@ class couchdb::config {
     value   => lookup('couchdb::max_dbs_open'),
   }
 
-  if $couchdb::uuid != undef {
-    ini_setting { 'uuid':
-      ensure  => present,
-      path    => '/opt/couchdb/etc/local.d/couchdb.ini',
-      section => 'couchdb',
-      setting => 'uuid',
-      value   => lookup('couchdb::uuid'),
-    }
-  }
-
   if $couchdb::max_document_size != undef {
     ini_setting { 'max_document_id_length':
       ensure  => present,
