@@ -2,8 +2,22 @@
 
 class couchdb::install {
 
-  # Includes apt and runs the configuration settings from hiera.
-  include apt
+  # Adds the repository of couchdb.
+  apt::source { 'apache_couchdb':
+    location => 'https://apache.bintray.com/couchdb-deb',
+    repos    => 'main',
+    include  => {
+      'deb' => true,
+    },
+    before   => Apt::Key['couchdb_key'],
+  }
+
+  # Adds the key for the repository.
+  apt::key { 'couchdb_key':
+    id     => '8756C4F765C9AC3CB6B85D62379CE192D401AB61',
+    server => 'pgp.mit.edu',
+    before => Exec['update_apt'],
+  }
 
   # Installs curl.
   package { 'curl':

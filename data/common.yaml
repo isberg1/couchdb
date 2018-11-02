@@ -17,14 +17,3 @@ couchdb::port: 5984
 couchdb::admin_password:
 couchdb::allow_persistent_cookies: false
 couchdb::require_valid_user: false
-
-# The repository and public key to use for the couchdb installation.
-apt::sources:
-  'couchdb-deb':
-    location: 'https://apache.bintray.com/couchdb-deb'
-    repos: 'main'
-    key:
-      id: '8756C4F765C9AC3CB6B85D62379CE192D401AB61'
-      server: 'pgp.mit.edu'
-    include:
-      deb: true
