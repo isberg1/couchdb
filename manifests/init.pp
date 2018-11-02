@@ -85,6 +85,10 @@ class couchdb (
   contain couchdb::install
 
   class { 'couchdb::config':
+    service { 'couchdb':
+      ensure => running,
+      subscribe Class['couchdb::config']
+    },
     require => Class['couchdb::install'],
   }
 
