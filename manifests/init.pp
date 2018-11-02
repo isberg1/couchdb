@@ -23,10 +23,6 @@
 #	This option places an upper bound on the number of databases that can be open at once.
 #
 #
-# @param uuid
-#	Unique identifier for this CouchDB server instance.
-#
-#
 # @param max_document_size
 #	Limit maximum document body size.
 #
@@ -74,7 +70,6 @@ class couchdb (
   Optional[String] $database_dir,
   Optional[Variant[Enum['none', 'snappy'], Pattern[/\Adeflate_[1-9]\z/]]] $file_compression,
   Optional[Integer] $max_dbs_open,
-  Optional[String] $uuid,
   Optional[Integer] $max_document_size,
   Optional[Boolean] $couch_peruser_enable,
   Optional[Boolean] $couch_peruser_delete,
