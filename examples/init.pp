@@ -7,7 +7,6 @@
 
 node default {
   class {'couchdb':
-    database_dir   => '/data',
     bind_address   => '0.0.0.0',
     port           => 5050,
     admin_password => 'MySecretPassword',
