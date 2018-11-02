@@ -15,7 +15,7 @@ class couchdb::install {
 
   # Installs the couchdb package.
   package { 'couchdb':
-    ensure   => installed,
-    require  => Class['apt::update'],
+    ensure  => installed,
+    require => Class['apt::update'],
   }
 }
