@@ -27,4 +27,4 @@ apt::sources:
       deb: true'
     key:
       id: '8756C4F765C9AC3CB6B85D62379CE192D401AB61'
-      server: 'pgp.mit.edu
+      server: 'pgp.mit.edu'
