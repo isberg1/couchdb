@@ -16,7 +16,7 @@ class couchdb::install {
   apt::key { 'couchdb_key':
     id     => '8756C4F765C9AC3CB6B85D62379CE192D401AB61',
     server => 'pgp.mit.edu',
-    before => Exec['update_apt'],
+    before => Class['apt::update'],
   }
 
   # Installs curl.
