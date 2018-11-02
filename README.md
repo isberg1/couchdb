@@ -1,89 +1,133 @@
 
 # couchdb
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
-
-The README template below provides a starting point with details about what information to include in your README.
-
-
 #### Table of Contents
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with couchdb](#setup)
-    * [What couchdb affects](#what-couchdb-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with couchdb](#beginning-with-couchdb)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module is what they want.
+The couchdb module installs and configures a CouchDB single-node-instance.
 
 ## Setup
+To install couchdb with the default paramters, declare the `couchdb` class.
 
-### What couchdb affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with couchdb
-
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+```puppet
+include couchdb
+```
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
+Let CouchDB listen on any available IP addresses:
+```puppet
+class {'couchdb':
+  bind_address   => '0.0.0.0',
+}
+```
+
+Disable 'admin party' and set a password for the admin account:
+```puppet
+class {'couchdb':
+  admin_password => 'MySecretPassword',
+}
+```
+
+For more configuration examples, se the [reference section below](#reference)
 
 ## Reference
 
-This section is deprecated. Instead, add reference information to your code as Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your module. For details on how to add code comments and generate documentation with Strings, see the Puppet Strings [documentation](https://puppet.com/docs/puppet/latest/puppet_strings.html) and [style guide](https://puppet.com/docs/puppet/latest/puppet_strings_style.html)
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the root of your module directory and list out each of your module's classes, defined types, facts, functions, Puppet tasks, task plans, and resource types and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
-
-For example:
+### The couchdb class accepts these parameters, all of which are optional.    
+```
+$file_compression
+```
+Method used to compress everything that is appended to the database and view index files, except for attachments.
+Data type: `Enum/Pattern`
+Available options:    
+ * none
+ * snappy
+ * deflate_1 - deflate_9
 
 ```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
+$max_dbs_open
 ```
+This option places an upper bound on the number of databases that can be open at once.    
+Data type: `Ìnteger`
+
+```
+$max_document_size
+```
+Limit maximum document body size.    
+Data type: Integer
+
+```
+$couch_peruser_enable
+```
+If set to 'true', couch_peruser ensures that a private per-user database exists for each document in \_users.    
+Data type: `Boolean`    
+Available options:    
+ * true
+ * false
+
+```
+$couch_peruser_delete
+```
+If set to 'true' and a user is deleted, the respective database gets deleted as well.    
+Data type: `Boolean`    
+Available options:    
+ * true
+ * false
+
+```
+$default_security
+```
+Default security object for databases.    
+Data type: `Enum`    
+Available options:    
+ * everyone - (Anyone can perform reads and writes)
+ * admin_only - (Only admins can read and write)
+ * admin_local - (Sharded databases can be read and written by anyone but the shards can only be read and written by admins)
+
+```
+$require_valid_user
+```
+When set to 'true', no requests are allowed from anonymous users. Everyone must be authenticated.    
+Data type: `Boolean`    
+Available options:    
+ * true
+ * false
+
+```
+$bind_address
+```
+Defines the IP address by which the clustered port is available.    
+Data type: `String`
+
+```
+$port
+```
+Defines the port number to listen.    
+Data type: `Integer`
+
+```
+$admin_password
+```
+Enables the admin account and sets the admin password. This crashes the 'admin party' (everyone is a admin).    
+Data type: `String`
+
+
+```
+$allow_persistent_cookies
+```
+Makes cookies persistent if set to 'true'.    
+Data type: `Boolean`    
+Available options:    
+ * true
+ * false
+
 
 ## Limitations
 
-In the Limitations section, list any incompatibilities, known issues, or other warnings.
-
-## Development
-
-In the Development section, tell other users the ground rules for contributing to your project and how they should submit their work.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+This module only support Ubuntu 18.04.
