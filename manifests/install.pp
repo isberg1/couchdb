@@ -12,7 +12,7 @@ class couchdb::install {
     include  => {
       'deb' => true,
     },
-    before   => Exec['update_apt'],
+    before   => Apt::Key['couchdb_key'],
   }
 
   # Installs curl.
@@ -20,14 +20,13 @@ class couchdb::install {
     ensure => installed,
   }
 
-  # Adds the PPA key.
-  exec {'add_key':
-    command => 'wget -q https://couchdb.apache.org/repo/bintray-pubkey.asc -O /tmp/key;apt-key add /tmp/key;rm /tmp/key',
-    path    => ['/usr/bin', '/bin', '/sbin'],
-    before  => Exec['update_apt'],
+  apt::key { 'couchdb_key':
+    id     => '8756C4F765C9AC3CB6B85D62379CE192D401AB61',
+    server => 'pgp.mit.edu',
+    before => Exec['update_apt'],
   }
 
-# Updates all repositories.
+  # Updates all repositories.
   exec {'update_apt':
     command => '/usr/bin/apt-get update',
     before  => Package['couchdb'],
