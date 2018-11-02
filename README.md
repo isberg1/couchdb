@@ -6,7 +6,8 @@
 1. [Description](#description)
 2. [Setup - The basics of getting started with couchdb](#setup)
 3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
+4. [Reference - Available parameters](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
 
 ## Description
 
@@ -24,7 +25,7 @@ include couchdb
 Let CouchDB listen on any available IP addresses:
 ```puppet
 class {'couchdb':
-  bind_address   => '0.0.0.0',
+  bind_address => '0.0.0.0',
 }
 ```
 
@@ -139,4 +140,4 @@ Available options:
 
 ## Limitations
 
-This module only support Ubuntu 18.04.
+This module runs on Ubuntu 18.04.
