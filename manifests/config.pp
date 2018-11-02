@@ -52,8 +52,6 @@ class couchdb::config {
     value   => $couchdb::couch_peruser_delete,
   }
 
-
-
   ini_setting { 'bind_address':
     ensure  => present,
     path    => '/opt/couchdb/etc/local.ini',
@@ -95,8 +93,4 @@ class couchdb::config {
     setting => 'allow_persistent_cookies',
     value   => $couchdb::allow_persistent_cookies,
   }
-
-
 }
-
-

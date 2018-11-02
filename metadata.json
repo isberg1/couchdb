@@ -1,6 +1,6 @@
 {
-  "name": "saurus-couchdb",
-  "version": "0.1.0",
+  "name": "couchdb",
+  "version": "1.0.0",
   "author": "Alexander Jakobsen, Mats Ove Mandt Skjaerstein",
   "summary": "Installs and configures CouchDB.",
   "license": "Apache-2.0",
