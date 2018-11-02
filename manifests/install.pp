@@ -17,6 +17,7 @@ class couchdb::install {
     ensure => installed,
   }
 
+  # Adds the key for the repository.
   apt::key { 'couchdb_key':
     id     => '8756C4F765C9AC3CB6B85D62379CE192D401AB61',
     server => 'pgp.mit.edu',
