@@ -5,11 +5,6 @@
 # default options if none is specified.
 #
 #
-# @param database_dir
-#	Specifies location of CouchDB database files (*.couch named).
-#	This location should be writable and readable for the user the CouchDB service runs as (couchdb by default).
-#
-#
 # @param file_compression
 #	Method used to compress everything that is appended to database and view index files, except for attachments.
 #	Available methods are:
@@ -67,7 +62,6 @@
 
 class couchdb (
   # Available parameters:
-  Optional[String] $database_dir,
   Optional[Variant[Enum['none', 'snappy'], Pattern[/\Adeflate_[1-9]\z/]]] $file_compression,
   Optional[Integer] $max_dbs_open,
   Optional[Integer] $max_document_size,
