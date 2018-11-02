@@ -1,7 +1,6 @@
 # couchdb/data/common.yaml
 ---
 # Server_Administration
-couchdb::database_dir: '/opt/couchdb/data'
 couchdb::file_compression: 'snappy'
 couchdb::max_dbs_open: 500
 couchdb::uuid:
