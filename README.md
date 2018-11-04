@@ -8,6 +8,7 @@
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - Available parameters](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Dependencies - Other requiered puppet modules](#dependencies)
 
 ## Description
 
@@ -141,3 +142,7 @@ Available options:
 ## Limitations
 
 This module runs on Ubuntu 18.04.
+
+## Dependencies
+
+* Puppet >= 4.8.0 < 7.0.0
