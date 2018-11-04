@@ -146,7 +146,7 @@ This module runs on Ubuntu 18.04.
 ## Dependencies
 
 * Puppet >= 4.8.0 < 7.0.0
-* puppetlabs/inifile = >= 2.3.0 < 2.4.0
+* puppetlabs/inifile >= 2.3.0 < 2.4.0
 * puppetlabs/stdlib = 5.1.0
 * puppetlabs/apt = 6.1.1
 
